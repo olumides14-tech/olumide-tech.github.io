@@ -1,550 +1,1156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Career Progression</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olumide Sodipo — Cleared Security & ICAM Professional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:           #080808;
+      --surface:      #101010;
+      --surface-2:    #181818;
+      --gold:         #C9A84C;
+      --gold-light:   #E2C97E;
+      --gold-dim:     rgba(201,168,76,0.10);
+      --gold-border:  rgba(201,168,76,0.22);
+      --text:         #DEDAD0;
+      --text-muted:   #7A7568;
+      --text-dim:     #3A3830;
+      --green:        #4BBF7A;
+      --green-dim:    rgba(75,191,122,0.08);
+      --green-border: rgba(75,191,122,0.28);
+      --amber:        #E2A84C;
+      --mono:         'JetBrains Mono', monospace;
+      --serif:        'Cinzel', serif;
+      --sans:         'DM Sans', sans-serif;
+    }
 
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C96A;
-    --dark: #0A0A0F;
-    --card-bg: #111118;
-    --border: rgba(201,168,76,0.25);
-    --text: #E8E8F0;
-    --muted: #888899;
-  }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-  body {
-    background: var(--dark);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background-image: 
-      radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.07) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.05) 0%, transparent 55%);
-  }
+    html { scroll-behavior: smooth; }
 
-  .poster {
-    width: 420px;
-    background: var(--dark);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 28px 24px 24px;
-    position: relative;
-    overflow: hidden;
-  }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  .poster::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
+    /* ─── NAVIGATION ─────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 58px;
+      background: rgba(8,8,8,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      gap: 1rem;
+    }
 
-  /* HEADER */
-  .header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-shrink: 0;
+    }
 
-  .header h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.1em;
-    color: var(--gold);
-    line-height: 1;
-  }
+    .nav-brand-name {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.07em;
+      line-height: 1.2;
+    }
 
-  .header p {
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
+    .nav-brand-sub {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
 
-  /* TIMELINE */
-  .timeline {
-    position: relative;
-    padding-left: 16px;
-  }
+    .nav-tabs {
+      display: flex;
+      list-style: none;
+      height: 58px;
+    }
 
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 6px;
-    top: 8px;
-    bottom: 8px;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--gold) 15%, var(--gold) 85%, transparent);
-    opacity: 0.35;
-  }
+    .nav-tabs li button {
+      height: 58px;
+      padding: 0 1.1rem;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
 
-  .item {
-    position: relative;
-    margin-bottom: 8px;
-    padding-left: 18px;
-  }
+    .nav-tabs li button:hover {
+      color: var(--text);
+    }
 
-  .item::before {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--gold);
-    opacity: 0.5;
-  }
+    .nav-tabs li button.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
 
-  .item.highlight::before {
-    opacity: 1;
-    box-shadow: 0 0 8px var(--gold);
-    width: 9px;
-    height: 9px;
-    left: -11px;
-  }
+    /* ─── MAIN / PAGES ───────────────────────────── */
+    main { margin-top: 58px; }
 
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
+    .page { display: none; }
+    .page.active {
+      display: block;
+      animation: fadein 0.28s ease;
+    }
 
-  .card.highlight {
-    border-color: rgba(201,168,76,0.7);
-    background: linear-gradient(135deg, #14120a, #1a1710);
-    box-shadow: 0 0 20px rgba(201,168,76,0.12);
-  }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0);   }
+    }
 
-  .left {
-    flex: 1;
-    min-width: 0;
-  }
+    /* ─── PAGE HEADER ────────────────────────────── */
+    .page-header {
+      padding: 3.5rem 2.5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      border-bottom: 1px solid var(--gold-border);
+    }
 
-  .role {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
-    color: var(--text);
-    line-height: 1.1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
 
-  .company {
-    font-size: 0.62rem;
-    color: var(--gold);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 1px;
-  }
+    .page-header p {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
-  .meta {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 4px;
-    flex-wrap: wrap;
-  }
+    /* ─── TIMELINE (CAREER TAB) ──────────────────── */
+    .timeline-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+      position: relative;
+    }
 
-  .dates {
-    font-size: 0.58rem;
-    color: var(--muted);
-  }
+    .timeline-line {
+      position: absolute;
+      left: calc(2.5rem + 0.5rem);  /* padding + dot center */
+      top: 0;
+      bottom: 4rem;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--gold-border) 8%,
+        var(--gold-border) 92%,
+        transparent
+      );
+    }
 
-  .tag {
-    font-size: 0.55rem;
-    padding: 1px 7px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+    .role-card {
+      position: relative;
+      padding-left: 2.2rem;
+      margin-bottom: 2.2rem;
+    }
 
-  .tag.clearance {
-    border-color: rgba(201,168,76,0.3);
-    color: var(--gold);
-  }
+    .role-dot {
+      position: absolute;
+      left: 0;
+      top: 1.6rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--text-dim);
+      transform: translateX(4px);
+      z-index: 1;
+    }
 
-  .right {
-    text-align: right;
-    flex-shrink: 0;
-  }
+    .role-card.current .role-dot {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 14px rgba(201,168,76,0.55);
+    }
 
-  .salary {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.15rem;
-    color: var(--gold-light);
-    letter-spacing: 0.04em;
-    line-height: 1;
-  }
+    .role-inner {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      padding: 1.4rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
 
-  .salary-label {
-    font-size: 0.55rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+    .role-inner:hover { border-color: rgba(201,168,76,0.45); }
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 20px;
-    padding: 2px 9px;
-    font-size: 0.72rem;
-    color: var(--gold);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    margin-top: 2px;
-    white-space: nowrap;
-  }
+    .role-card.current .role-inner {
+      border-color: var(--gold-border);
+    }
 
-  .offer-tag {
-    position: absolute;
-    top: -8px;
-    right: 10px;
-    background: var(--gold);
-    color: #000;
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    padding: 2px 8px;
-    border-radius: 20px;
-  }
+    .role-card.current .role-inner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 70%);
+    }
 
-  /* COMBINED ROW */
-  .combined-row {
-    margin-top: 4px;
-    padding-top: 6px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-  .combined-label {
-    font-size: 0.58rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
+    .role-company {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 0.15rem;
+    }
 
-  .combined-amount {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.95rem;
-    color: rgba(201,168,76,0.75);
-    letter-spacing: 0.04em;
-  }
+    .role-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
 
-  /* EXPAND */
-  .expand-btn {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 0;
-    margin-top: 4px;
-    font-family: 'DM Sans', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+    .badges {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
 
-  .expand-btn:hover { color: var(--gold); }
+    .badge {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.45rem;
+      border: 1px solid;
+    }
+    .badge-date      { border-color: var(--text-dim);   color: var(--text-muted); }
+    .badge-clear     { border-color: rgba(201,168,76,0.35); color: var(--gold); background: var(--gold-dim); }
+    .badge-signed    { border-color: var(--green-border); color: var(--green); background: var(--green-dim); }
 
-  .description {
-    display: none;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-  }
+    .role-salary {
+      text-align: right;
+      flex-shrink: 0;
+    }
 
-  .description.open { display: block; }
+    .salary-base {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
 
-  .description ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+    .salary-delta {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
+    }
+    .delta-up      { color: var(--green); }
+    .delta-neutral { color: var(--text-muted); }
 
-  .description ul li {
-    font-size: 0.62rem;
-    color: var(--muted);
-    line-height: 1.5;
-    padding-left: 10px;
-    position: relative;
-  }
+    .goal-strip {
+      margin-top: 0.85rem;
+      padding: 0.4rem 0.8rem;
+      background: var(--green-dim);
+      border: 1px solid var(--green-border);
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
 
-  .description ul li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-size: 0.55rem;
-  }
-  .blurred {
-    display: inline-block;
-    filter: blur(2px);
-    user-select: none;
-    cursor: pointer;
-    transition: filter 0.3s ease;
-  }
-  .blurred:active { filter: blur(0); }
+    /* expand btn */
+    .expand-btn {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: none;
+      border: 1px solid var(--gold-border);
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .expand-btn:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+    .expand-btn .chevron { transition: transform 0.22s; font-style: normal; }
+    .expand-btn.open .chevron { transform: rotate(90deg); }
 
-  /* STATS */
-  .stats {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 16px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-  }
+    .role-details {
+      display: none;
+      margin-top: 1.1rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--gold-border);
+    }
+    .role-details.open {
+      display: block;
+      animation: fadein 0.22s ease;
+    }
+    .role-details ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .role-details li {
+      font-size: 0.865rem;
+      color: var(--text);
+      line-height: 1.65;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .role-details li::before {
+      content: '›';
+      position: absolute; left: 0;
+      color: var(--gold);
+    }
 
-  .stat {
-    text-align: center;
-  }
+    .role-certs {
+      margin-top: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      color: var(--text-muted);
+      letter-spacing: 0.07em;
+    }
 
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    color: var(--gold);
-    letter-spacing: 0.05em;
-    line-height: 1;
-  }
+    /* ─── CERTIFICATIONS TAB ─────────────────────── */
+    .certs-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
 
-  .stat-label {
-    font-size: 0.58rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 2px;
-  }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--gold-border);
+      margin-bottom: 1.4rem;
+    }
 
-  .stat-divider {
-    width: 1px;
-    background: var(--border);
-    align-self: stretch;
-  }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 2.8rem;
+    }
 
-  /* FOOTER */
-  .footer {
-    text-align: center;
-    margin-top: 14px;
-    font-size: 0.58rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    opacity: 0.7;
-  }
-</style>
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      padding: 1.2rem;
+      position: relative;
+      transition: border-color 0.22s, transform 0.22s;
+    }
+    .cert-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-2px); }
+    .cert-card.target {
+      border-style: dashed;
+      border-color: var(--text-dim);
+      opacity: 0.72;
+    }
+    .cert-card.target:hover { border-color: var(--gold-border); opacity: 1; }
+
+    .cert-check {
+      position: absolute;
+      top: 0.7rem; right: 0.7rem;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      font-weight: 700;
+    }
+
+    .cert-emoji { font-size: 1.6rem; margin-bottom: 0.65rem; line-height: 1; }
+    .cert-name {
+      font-family: var(--serif);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 0.25rem;
+    }
+    .cert-issuer {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .cert-status {
+      margin-top: 0.65rem;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .s-earned     { color: var(--green);  }
+    .s-progress   { color: var(--amber);  }
+    .s-target     { color: var(--gold);   }
+
+    /* ─── LAB & PROJECTS (STUB) ──────────────────── */
+    /* ─── RESOURCES (STUB) ───────────────────────── */
+    .stub-wrap {
+      max-width: 580px;
+      margin: 5rem auto;
+      padding: 0 2.5rem;
+      text-align: center;
+    }
+    .stub-tag {
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .stub-wrap h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+    .stub-divider { width: 48px; height: 1px; background: var(--gold-border); margin: 0 auto 1.2rem; }
+    .stub-wrap p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .lab-modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.8rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+    .lab-module {
+      border: 1px dashed var(--text-dim);
+      padding: 1rem;
+      background: var(--surface);
+    }
+    .lab-module-icon  { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .lab-module-name  { font-family: var(--serif); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+    .lab-module-tag   { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+
+    /* ─── ABOUT TAB ──────────────────────────────── */
+    .about-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .id-card {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      padding: 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 78px;
+    }
+
+    .id-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1.5px solid var(--gold-border);
+      margin: 0 auto 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .id-name {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .id-role {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .id-clearance {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      padding: 0.3rem 0.6rem;
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      background: var(--gold-dim);
+    }
+
+    .id-divider { width: 40px; height: 1px; background: var(--gold-border); margin: 1rem auto; }
+
+    .id-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .id-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--gold-border);
+      transition: color 0.2s, border-color 0.2s;
+      letter-spacing: 0.06em;
+    }
+    .id-link:hover { color: var(--gold); border-color: var(--gold); }
+
+    .about-body { }
+
+    .about-bio {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.82;
+      margin-bottom: 2.5rem;
+    }
+    .about-bio p { margin-bottom: 0.9rem; }
+    .about-bio p:last-child { margin-bottom: 0; }
+    .about-bio strong { color: var(--gold-light); font-weight: 500; }
+
+    .about-section { margin-bottom: 2.4rem; }
+    .about-section-title {
+      font-family: var(--serif);
+      font-size: 0.78rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--gold-border);
+    }
+
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .chip {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.07em;
+      padding: 0.25rem 0.6rem;
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .chip.target { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+
+    .contact-list { display: flex; flex-direction: column; gap: 0.65rem; }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.7rem 0.9rem;
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      transition: color 0.2s, border-color 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .contact-row:hover { color: var(--gold); border-color: var(--gold); }
+    .contact-icon { color: var(--gold); font-size: 0.9rem; width: 18px; text-align: center; }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--gold-border);
+      padding: 1.4rem 2.5rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 700px) {
+      nav { padding: 0 1rem; }
+      .nav-tabs li button { padding: 0 0.6rem; font-size: 0.58rem; letter-spacing: 0.08em; }
+      .page-header, .timeline-wrap, .certs-wrap, .about-wrap { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .stub-wrap { padding: 0 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="poster">
+<!-- ════════════════════════════════════════════════ -->
+<!--  NAV                                            -->
+<!-- ════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-brand-name">Olumide Sodipo</div>
+    <div class="nav-brand-sub">TS/SCI · CI Polygraph · USMC Veteran</div>
+  </div>
+  <ul class="nav-tabs">
+    <li><button class="active" onclick="switchTab('career', this)">Career</button></li>
+    <li><button onclick="switchTab('certs', this)">Certifications</button></li>
+    <li><button onclick="switchTab('lab', this)">Lab &amp; Projects</button></li>
+    <li><button onclick="switchTab('resources', this)">Resources</button></li>
+    <li><button onclick="switchTab('about', this)">About</button></li>
+  </ul>
+</nav>
 
-  <div class="header">
+<main>
+
+<!-- ════════════════════════════════════════════════ -->
+<!--  TAB: CAREER                                    -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="tab-career" class="page active">
+  <div class="page-header">
     <h1>Career Progression</h1>
-  
+    <p>U.S. Marine Corps → Federal Security &amp; ICAM Engineering</p>
   </div>
 
-  <div class="timeline">
+  <div class="timeline-wrap">
+    <div class="timeline-line"></div>
 
     <!-- USMC -->
-    <div class="item">
-      <div class="card">
-        <div class="left">
-          <div class="role">United States Marine Corps</div>
-          <div class="meta">
-            <span class="dates">2018 — 2022</span>
-            <span class="tag clearance">Secret</span>
+    <div class="role-card">
+      <div class="role-dot"></div>
+      <div class="role-inner">
+        <div class="role-header">
+          <div>
+            <div class="role-company">United States Marine Corps</div>
+            <div class="role-title">Helpdesk Technician</div>
+            <div class="badges">
+              <span class="badge badge-date">2018 — 2022</span>
+              <span class="badge badge-clear">Secret</span>
+            </div>
+          </div>
+          <div class="role-salary">
+            <div class="salary-base">XX,000 base</div>
           </div>
         </div>
-        <div class="right">
-          <div class="salary">XX,000</div>
-          <div class="salary-label">Base Salary</div>
+        <button class="expand-btn" onclick="toggleRole(this)">
+          <i class="chevron">▶</i><span class="btn-label">View Role</span>
+        </button>
+        <div class="role-details">
+          <ul>
+            <li>Provided Tier 1 support in a classified environment, resolving system issues, hardware failures, and OS/application errors.</li>
+            <li>Performed Windows 10 migration and imaging for over 400 systems using SCCM, improving endpoint performance and security posture.</li>
+            <li>Maintained ServiceNow tickets for traceability and SLA compliance in accordance with DoD ITIL frameworks.</li>
+            <li>Installed, patched, and secured DoD-approved software and ensured endpoint configuration compliance with DISA STIGs.</li>
+          </ul>
         </div>
       </div>
     </div>
 
     <!-- IMTAS -->
-    <div class="item">
-      <div class="card">
-        <div class="left">
-          <div class="role">IT Specialist</div>
-          <div class="company">IMTAS</div>
-          <div class="meta">
-            <span class="dates">Apr — Aug 2023</span>
-            <span class="tag clearance">TS/SCI CI Poly</span>
+    <div class="role-card">
+      <div class="role-dot"></div>
+      <div class="role-inner">
+        <div class="role-header">
+          <div>
+            <div class="role-company">IMTAS</div>
+            <div class="role-title">IT Specialist</div>
+            <div class="badges">
+              <span class="badge badge-date">Apr — Aug 2023</span>
+              <span class="badge badge-clear">TS/SCI CI Poly</span>
+            </div>
           </div>
-          <button class="expand-btn" onclick="toggleDesc('imtas')"><span id="imtas-arrow">▸</span> View Role</button>
-          <div class="description" id="imtas">
-            <ul>
-              <li>Delivered Tier 1–2 desktop and endpoint security support, including hard/soft token troubleshooting and DoD certificate installations.</li>
-              <li>Hardened endpoints by performing manual remediation and basic incident triage in coordination with cybersecurity personnel.</li>
-              <li>Managed AD accounts and permissions to ensure least privilege and identity access management (IAM) standards.</li>
-              <li>Acted as PKI LRA — managed PIV card issuance and RSA token administration.</li>
-              <li>Educated users on secure computing practices, system access protocols, and safe authentication measures.</li>
-            </ul>
+          <div class="role-salary">
+            <div class="salary-base">XX,000 base</div>
+            <div class="salary-delta delta-up">▲ +$13K Increase</div>
           </div>
         </div>
-        <div class="right">
-          <div class="salary">XX,000</div>
-          <div class="salary-label">Base Salary</div>
-          <div class="badge">▲ +$13K Increase</div>
+        <button class="expand-btn" onclick="toggleRole(this)">
+          <i class="chevron">▶</i><span class="btn-label">View Role</span>
+        </button>
+        <div class="role-details">
+          <ul>
+            <li>Delivered Tier 1–2 desktop and endpoint security support, including hard/soft token troubleshooting and DoD certificate installations.</li>
+            <li>Hardened endpoints by performing manual remediation and basic incident triage in coordination with cybersecurity personnel.</li>
+            <li>Managed AD accounts and permissions to ensure least privilege and identity access management (IAM) standards.</li>
+            <li>Acted as PKI LRA — managed PIV card issuance and RSA token administration.</li>
+            <li>Educated users on secure computing practices, system access protocols, and safe authentication measures.</li>
+          </ul>
         </div>
       </div>
     </div>
 
     <!-- ECS -->
-    <div class="item">
-      <div class="card">
-        <div class="left">
-          <div class="role">Service Desk Analyst</div>
-          <div class="company">ECS Federal</div>
-          <div class="meta">
-            <span class="dates">2023 — 2025</span>
-            <span class="tag clearance">TS/SCI CI Poly</span>
+    <div class="role-card">
+      <div class="role-dot"></div>
+      <div class="role-inner">
+        <div class="role-header">
+          <div>
+            <div class="role-company">ECS Federal</div>
+            <div class="role-title">Service Desk Analyst</div>
+            <div class="badges">
+              <span class="badge badge-date">2023 — 2025</span>
+              <span class="badge badge-clear">TS/SCI CI Poly</span>
+            </div>
           </div>
-          <button class="expand-btn" onclick="toggleDesc('ecs')"><span id="ecs-arrow">▸</span> View Role</button>
-          <div class="description" id="ecs">
-            <ul>
-              <li>Acted as Tier 2–3 escalation support investigating security-related requests involving authentication failures, endpoint security alerts, and identity access issues.</li>
-              <li>Resolved over 500 monthly tickets involving RBAC permissions, vulnerability remediation, endpoint hardening, and secure configuration enforcement.</li>
-              <li>Executed secure software deployments and system hardening tasks using PowerShell, BigFix, and Microsoft Azure.</li>
-              <li>Performed Active Directory administration — creating, modifying, and disabling user accounts, enforcing group policies, and managing role-based access.</li>
-              <li>Supported PKI certificate administration, MFA troubleshooting, and authentication token management in accordance with Zero Trust security practices.</li>
-              <li>Administered enterprise software licensing through BigFix, Adobe Admin Console, and Microsoft Azure supporting identity lifecycle management and license auditing.</li>
-              <li>Maintained compliance documentation and change records in Service Manager to support audit readiness.</li>
-            </ul>
+          <div class="role-salary">
+            <div class="salary-base">XX,000 base</div>
+            <div class="salary-delta delta-up">▲ +$54K Increase</div>
           </div>
         </div>
-        <div class="right">
-          <div class="salary">XX,000</div>
-          <div class="salary-label">Base Salary</div>
-          <div class="badge">▲ +$54K Increase</div>
+        <button class="expand-btn" onclick="toggleRole(this)">
+          <i class="chevron">▶</i><span class="btn-label">View Role</span>
+        </button>
+        <div class="role-details">
+          <ul>
+            <li>Acted as Tier 2–3 escalation support investigating security-related requests involving authentication failures, endpoint security alerts, and identity access issues.</li>
+            <li>Resolved over 500 monthly tickets involving RBAC permissions, vulnerability remediation, endpoint hardening, and secure configuration enforcement.</li>
+            <li>Executed secure software deployments and system hardening tasks using PowerShell, BigFix, and Microsoft Azure.</li>
+            <li>Performed Active Directory administration — creating, modifying, and disabling user accounts, enforcing group policies, and managing role-based access.</li>
+            <li>Supported PKI certificate administration, MFA troubleshooting, and authentication token management in accordance with Zero Trust security practices.</li>
+            <li>Administered enterprise software licensing through BigFix, Adobe Admin Console, and Microsoft Azure supporting identity lifecycle management and license auditing.</li>
+            <li>Maintained compliance documentation and change records in Service Manager to support audit readiness.</li>
+            <li>Collaborated in Agile/Scrum sprints to implement secure infrastructure changes and automate tasks; provided sprint-end metrics to drive retrospectives.</li>
+          </ul>
         </div>
       </div>
     </div>
 
     <!-- YSI -->
-    <div class="item">
-      <div class="card">
-        <div class="left">
-          <div class="role">Systems Administrator</div>
-          <div class="company">YSI</div>
-          <div class="meta">
-            <span class="dates">2025 — 2026</span>
-            <span class="tag clearance">TS/SCI CI Poly</span>
+    <div class="role-card">
+      <div class="role-dot"></div>
+      <div class="role-inner">
+        <div class="role-header">
+          <div>
+            <div class="role-company">YSI</div>
+            <div class="role-title">Systems Administrator</div>
+            <div class="badges">
+              <span class="badge badge-date">2025 — 2026</span>
+              <span class="badge badge-clear">TS/SCI CI Poly</span>
+            </div>
           </div>
-          <button class="expand-btn" onclick="toggleDesc('ysi')"><span id="ysi-arrow">▸</span> View Role</button>
-          <div class="description" id="ysi">
-            <ul>
-              <li>Secured enterprise identity infrastructure by administering Active Directory environments, enforcing RBAC access policies, and maintaining hardened GPO security baselines.</li>
-              <li>Supported cybersecurity incident response activities including authentication investigations, directory recovery procedures, and system integrity validation.</li>
-              <li>Remediated system vulnerabilities and performed patching on Windows Server VMs within a VMware-based environment ensuring stability and compliance.</li>
-              <li>Collaborated with federal stakeholders to align with FBI change management and cybersecurity policy requirements.</li>
-              <li>Monitored domain controller health, replication, and SYSVOL performance to prevent security gaps.</li>
-              <li>Enforced identity lifecycle security managing onboarding/offboarding and secure provisioning and deprovisioning of privileged access across multiple enclaves.</li>
-              <li>Led monthly patch captain duties — building RFCs, conducting patch testing, coordinating downtime, and running Tenable scans post-patching with ISSOs.</li>
-            </ul>
+          <div class="role-salary">
+            <div class="salary-base">XX,000 base</div>
+            <div class="salary-delta delta-neutral">▲ XP Upgrade · ▼ −$1K</div>
           </div>
         </div>
-        <div class="right">
-          <div class="salary">XX,000</div>
-          <div class="salary-label">Base Salary</div>
-          <div class="badge">▲ XP Upgrade · ▼ -$1K</div>
+        <button class="expand-btn" onclick="toggleRole(this)">
+          <i class="chevron">▶</i><span class="btn-label">View Role</span>
+        </button>
+        <div class="role-details">
+          <ul>
+            <li>Secured enterprise identity infrastructure by administering Active Directory environments, enforcing RBAC access policies, and maintaining hardened GPO security baselines.</li>
+            <li>Supported cybersecurity incident response activities including authentication investigations, directory recovery procedures, and system integrity validation.</li>
+            <li>Remediated system vulnerabilities and performed patching on Windows Server VMs within a VMware-based environment ensuring stability and compliance.</li>
+            <li>Collaborated with federal stakeholders to align with FBI change management and cybersecurity policy requirements.</li>
+            <li>Monitored domain controller health, replication, and SYSVOL performance to prevent security gaps.</li>
+            <li>Enforced identity lifecycle security managing onboarding/offboarding and secure provisioning and deprovisioning of privileged access across multiple enclaves.</li>
+            <li>Led monthly patch captain duties — building RFCs, conducting patch testing, coordinating downtime, and running Tenable scans post-patching with ISSOs.</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- Revolutional -->
-    <div class="item highlight">
-      <div class="card highlight" style="position:relative; flex-direction: column; align-items: stretch;">
-        <span class="offer-tag">OFFER SIGNED ✍️</span>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; padding-top: 10px;">
-          <div class="left">
-            <div class="role">Systems Administrator</div>
-            <div class="company">Revolutional</div>
-            <div class="meta">
-              <span class="dates">2026 — Future</span>
-              <span class="tag clearance">TS/SCI</span>
-            </div>
-            <button class="expand-btn" onclick="toggleDesc('rev')"><span id="rev-arrow">▸</span> View Role</button>
-            <div class="description" id="rev">
-              <ul>
-                <li>Install, configure, and maintain operating systems, applications, and software patches in a classified onsite federal environment.</li>
-                <li>Implement security measures to protect systems from unauthorized access and conduct regular security audits and patch cycles.</li>
-                <li>Provide Tier 1–3 technical support to end-users including troubleshooting hardware, software, and connectivity issues.</li>
-                <li>Implement backup and disaster recovery solutions to protect data integrity and minimize downtime.</li>
-                <li>Identify and automate repetitive tasks using PowerShell and scripting tools to streamline administration processes.</li>
-                <li>Collaborate with IT teams and federal stakeholders to support organizational goals and ensure alignment with security policy.</li>
-              </ul>
+    <!-- REVOLUTIONAL — CURRENT / GOAL REACHED -->
+    <div class="role-card current">
+      <div class="role-dot"></div>
+      <div class="role-inner">
+        <div class="role-header">
+          <div>
+            <div class="role-company">Revolutional</div>
+            <div class="role-title">Systems Administrator</div>
+            <div class="badges">
+              <span class="badge badge-date">2026 — Future</span>
+              <span class="badge badge-clear">TS/SCI</span>
+              <span class="badge badge-signed">✍ Offer Signed</span>
             </div>
           </div>
-          <div class="right">
-            <div class="salary">XXX,000</div>
-            <div class="salary-label">Base Salary</div>
-            <div class="badge">▲ +$25K Increase 🏆</div>
+          <div class="role-salary">
+            <div class="salary-base">XXX,000 base</div>
+            <div class="salary-delta delta-up">▲ +$25K Increase 🏆</div>
           </div>
         </div>
+        <div class="goal-strip">☑ Goal Reached · 6 Figures · 4 Years Post USMC Discharge</div>
+        <button class="expand-btn" onclick="toggleRole(this)">
+          <i class="chevron">▶</i><span class="btn-label">View Role</span>
+        </button>
+        <div class="role-details">
+          <ul>
+            <li>Install, configure, and maintain operating systems, applications, and software patches in a classified onsite federal environment.</li>
+            <li>Implement security measures to protect systems from unauthorized access and conduct regular security audits and patch cycles.</li>
+            <li>Provide Tier 1–3 technical support to end-users including troubleshooting hardware, software, and connectivity issues.</li>
+            <li>Implement backup and disaster recovery solutions to protect data integrity and minimize downtime.</li>
+            <li>Identify and automate repetitive tasks using PowerShell and scripting tools to streamline administration processes.</li>
+            <li>Collaborate with IT teams and federal stakeholders to support organizational goals and ensure alignment with security policy.</li>
+          </ul>
+        </div>
+        <div class="role-certs">Security+ · AZ-900 · SAFe 6 Scrum Master · WGU B.S. In Progress</div>
       </div>
     </div>
 
-  </div>
+  </div><!-- /timeline-wrap -->
+</div><!-- /career tab -->
 
-  <div style="text-align:center; margin: 14px 0 10px; padding-top: 12px; border-top: 1px solid rgba(201,168,76,0.2);">
-    <div style="font-family:'Bebas Neue',sans-serif; font-size:0.7rem; color:var(--muted); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:4px;">☑ GOAL REACHED</div>
-    <div style="font-family:'Bebas Neue',sans-serif; font-size:0.75rem; color:var(--muted); letter-spacing:0.14em; line-height:1;">6 FIGURES</div>
-    <div style="font-family:'Bebas Neue',sans-serif; font-size:0.75rem; color:var(--muted); letter-spacing:0.14em; margin-top:2px;">4 YEARS POST USMC DISCHARGE</div>
-  </div>
 
-  <div class="footer">
-    Security+ · AZ-900 · SAFe Scrum Master · WGU B.S. In Progress
+<!-- ════════════════════════════════════════════════ -->
+<!--  TAB: CERTIFICATIONS                            -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="tab-certs" class="page">
+  <div class="page-header">
+    <h1>Certifications</h1>
+    <p>Earned credentials · Active pursuit · Engineering roadmap</p>
   </div>
+  <div class="certs-wrap">
 
-</div>
+    <div class="section-label">// Earned — Active</div>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <div class="cert-check">✓</div>
+        <div class="cert-emoji">🛡️</div>
+        <div class="cert-name">CompTIA Security+</div>
+        <div class="cert-issuer">CompTIA</div>
+        <div class="cert-status s-earned">● Active</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-check">✓</div>
+        <div class="cert-emoji">☁️</div>
+        <div class="cert-name">Azure Fundamentals</div>
+        <div class="cert-issuer">Microsoft · AZ-900</div>
+        <div class="cert-status s-earned">● Active</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-check">✓</div>
+        <div class="cert-emoji">⚡</div>
+        <div class="cert-name">SAFe 6 Scrum Master</div>
+        <div class="cert-issuer">Scaled Agile</div>
+        <div class="cert-status s-earned">● Active</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-check">✓</div>
+        <div class="cert-emoji">🔄</div>
+        <div class="cert-name">Professional Scrum Master I</div>
+        <div class="cert-issuer">Scrum.org · PSM I</div>
+        <div class="cert-status s-earned">● Active</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-check">✓</div>
+        <div class="cert-emoji">💻</div>
+        <div class="cert-name">IT Fundamentals+</div>
+        <div class="cert-issuer">CompTIA · ITF+</div>
+        <div class="cert-status s-earned">● Active</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-check">✓</div>
+        <div class="cert-emoji">🎧</div>
+        <div class="cert-name">HDI Customer Service Rep</div>
+        <div class="cert-issuer">HDI · HDI-CSR</div>
+        <div class="cert-status s-earned">● Active</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-check">✓</div>
+        <div class="cert-emoji">🔧</div>
+        <div class="cert-name">Google IT Support</div>
+        <div class="cert-issuer">Google · Coursera</div>
+        <div class="cert-status s-earned">● Active</div>
+      </div>
+
+    </div>
+
+    <div class="section-label">// In Progress</div>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <div class="cert-emoji">🎓</div>
+        <div class="cert-name">B.S. Business Information Technology Management</div>
+        <div class="cert-issuer">Western Governors University</div>
+        <div class="cert-status s-progress">◎ In Progress · Expected 2026</div>
+      </div>
+
+    </div>
+
+    <div class="section-label">// Target — Security Engineering Roadmap</div>
+    <div class="cert-grid">
+
+      <div class="cert-card target">
+        <div class="cert-emoji">🔐</div>
+        <div class="cert-name">Azure Security Engineer Associate</div>
+        <div class="cert-issuer">Microsoft · AZ-500</div>
+        <div class="cert-status s-target">◉ Priority Target</div>
+      </div>
+
+      <div class="cert-card target">
+        <div class="cert-emoji">🗝️</div>
+        <div class="cert-name">CyberArk Trustee / Defender</div>
+        <div class="cert-issuer">CyberArk · PAM Platform</div>
+        <div class="cert-status s-target">◉ Priority Target</div>
+      </div>
+
+      <div class="cert-card target">
+        <div class="cert-emoji">🐧</div>
+        <div class="cert-name">Linux+ or RHCSA</div>
+        <div class="cert-issuer">CompTIA / Red Hat</div>
+        <div class="cert-status s-target">◉ Target</div>
+      </div>
+
+      <div class="cert-card target">
+        <div class="cert-emoji">⚙️</div>
+        <div class="cert-name">CISSP</div>
+        <div class="cert-issuer">ISC²</div>
+        <div class="cert-status s-target">◉ Long-Term Target</div>
+      </div>
+
+    </div>
+
+  </div>
+</div><!-- /certs tab -->
+
+
+<!-- ════════════════════════════════════════════════ -->
+<!--  TAB: LAB & PROJECTS                            -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="tab-lab" class="page">
+  <div class="page-header">
+    <h1>Lab &amp; Projects</h1>
+    <p>Home lab · PowerShell tooling · ICAM engineering projects</p>
+  </div>
+  <div class="stub-wrap" style="margin-top:1rem">
+    <div class="stub-tag">// Initializing Lab Environment</div>
+    <div class="stub-divider"></div>
+    <p>Home lab documentation, PowerShell scripts, Active Directory hardening playbooks, Azure Entra ID configs, and ICAM engineering projects are actively being built and will be documented here as they come online.</p>
+    <div class="lab-modules">
+      <div class="lab-module">
+        <div class="lab-module-icon">🏠</div>
+        <div class="lab-module-name">Active Directory Lab</div>
+        <div class="lab-module-tag">Minisforum UM790 Pro · VMware</div>
+      </div>
+      <div class="lab-module">
+        <div class="lab-module-icon">☁️</div>
+        <div class="lab-module-name">Azure Entra ID</div>
+        <div class="lab-module-tag">Hybrid Identity · Conditional Access</div>
+      </div>
+      <div class="lab-module">
+        <div class="lab-module-icon">🔐</div>
+        <div class="lab-module-name">CyberArk PAM Lab</div>
+        <div class="lab-module-tag">Coming Soon</div>
+      </div>
+      <div class="lab-module">
+        <div class="lab-module-icon">⚙️</div>
+        <div class="lab-module-name">PowerShell Tooling</div>
+        <div class="lab-module-tag">RBAC Audits · Identity Lifecycle</div>
+      </div>
+      <div class="lab-module">
+        <div class="lab-module-icon">🛡️</div>
+        <div class="lab-module-name">STIG Hardening</div>
+        <div class="lab-module-tag">Windows Server · DISA Baselines</div>
+      </div>
+      <div class="lab-module">
+        <div class="lab-module-icon">🐧</div>
+        <div class="lab-module-name">Linux Administration</div>
+        <div class="lab-module-tag">Coming Soon</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /lab tab -->
+
+
+<!-- ════════════════════════════════════════════════ -->
+<!--  TAB: RESOURCES                                 -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="tab-resources" class="page">
+  <div class="page-header">
+    <h1>Resources</h1>
+    <p>Roadmaps · Cert paths · Guides for veterans &amp; cleared professionals</p>
+  </div>
+  <div class="stub-wrap" style="margin-top:1rem">
+    <div class="stub-tag">// Building Content Library</div>
+    <div class="stub-divider"></div>
+    <p>Curated roadmaps, cert paths, tooling guides, and career resources specifically for veterans and cleared professionals breaking into ICAM and federal security engineering. Coming soon.</p>
+  </div>
+</div><!-- /resources tab -->
+
+
+<!-- ════════════════════════════════════════════════ -->
+<!--  TAB: ABOUT                                     -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="tab-about" class="page">
+  <div class="page-header">
+    <h1>About</h1>
+    <p>Background · Mission · Contact</p>
+  </div>
+  <div class="about-wrap">
+    <div class="about-grid">
+
+      <div class="id-card">
+        <div class="id-avatar">OS</div>
+        <div class="id-name">Olumide Sodipo</div>
+        <div class="id-role">
+          Systems Administrator<br>
+          Security &amp; ICAM Engineer<br>
+          (In Transition)<br>
+          USMC Veteran · Laurel, MD
+        </div>
+        <div class="id-clearance">TS/SCI · CI Polygraph</div>
+        <div class="id-divider"></div>
+        <div class="id-links">
+          <a href="mailto:olumides14@gmail.com" class="id-link">✉ olumides14@gmail.com</a>
+          <a href="https://linkedin.com/in/olumide-sodipo-471061219" target="_blank" class="id-link">in LinkedIn</a>
+          <a href="https://github.com/olumides14-tech" target="_blank" class="id-link">⌥ GitHub</a>
+        </div>
+      </div>
+
+      <div class="about-body">
+        <div class="about-bio">
+          <p>I'm a <strong>U.S. Marine Corps veteran</strong> and cleared systems administrator building a focused career transition into <strong>identity and access management (ICAM) and federal security engineering</strong>. I hold an active TS/SCI CI Polygraph clearance and have spent the past several years working inside classified federal environments at the intersection of identity, infrastructure, and security.</p>
+          <p>My background includes enterprise Active Directory administration, RBAC enforcement, PKI certificate management, privileged access provisioning, endpoint hardening aligned to DISA STIGs, and vulnerability remediation across mission-critical federal networks. I've supported FBI infrastructure, performed patch captain duties, and worked alongside ISSOs on compliance-driven security operations.</p>
+          <p>I built this platform to <strong>document my technical journey</strong> in public — the home lab work, the scripting, the ICAM tooling, and the road to security engineering. I also want it to be a resource for <strong>other veterans and cleared professionals</strong> who are navigating this same transition without a clear roadmap.</p>
+          <p>If you're a vet breaking into federal IT, a cleared professional targeting ICAM or security engineering roles, or a hiring manager looking to connect — reach out.</p>
+        </div>
+
+        <div class="about-section">
+          <div class="about-section-title">Current Technical Strengths</div>
+          <div class="chip-row">
+            <span class="chip">Active Directory</span>
+            <span class="chip">Azure Entra ID</span>
+            <span class="chip">RBAC Administration</span>
+            <span class="chip">PKI / Certificates</span>
+            <span class="chip">PowerShell</span>
+            <span class="chip">Identity Lifecycle</span>
+            <span class="chip">DISA STIGs</span>
+            <span class="chip">Zero Trust</span>
+            <span class="chip">Patch Management</span>
+            <span class="chip">VMware</span>
+            <span class="chip">BigFix / SCCM</span>
+            <span class="chip">Tenable / Nessus</span>
+            <span class="chip">ServiceNow</span>
+            <span class="chip">NIST RMF</span>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <div class="about-section-title">Growth Targets — ICAM Engineering</div>
+          <div class="chip-row">
+            <span class="chip target">SailPoint IIQ</span>
+            <span class="chip target">CyberArk PAM</span>
+            <span class="chip target">Linux Administration</span>
+            <span class="chip target">Python Automation</span>
+            <span class="chip target">IGA Workflows</span>
+            <span class="chip target">SCIM / LDAP</span>
+            <span class="chip target">Entra PIM</span>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <div class="about-section-title">Contact</div>
+          <div class="contact-list">
+            <a href="mailto:olumides14@gmail.com" class="contact-row">
+              <span class="contact-icon">✉</span> olumides14@gmail.com
+            </a>
+            <a href="https://linkedin.com/in/olumide-sodipo-471061219" target="_blank" class="contact-row">
+              <span class="contact-icon">in</span> linkedin.com/in/olumide-sodipo-471061219
+            </a>
+            <a href="https://github.com/olumides14-tech" target="_blank" class="contact-row">
+              <span class="contact-icon">⌥</span> github.com/olumides14-tech
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div><!-- /about tab -->
+
+</main>
+
+<footer>
+  Olumide Sodipo · TS/SCI CI Polygraph · Security &amp; ICAM Engineering · Laurel, MD
+</footer>
 
 <script>
-function toggleDesc(id) {
-  const desc = document.getElementById(id);
-  const arrow = document.getElementById(id + '-arrow');
-  const btn = arrow.parentElement;
-  desc.classList.toggle('open');
-  if (desc.classList.contains('open')) {
-    arrow.textContent = '▾';
-    btn.innerHTML = btn.innerHTML.replace('View Role', 'Hide Role');
-  } else {
-    arrow.textContent = '▸';
-    btn.innerHTML = btn.innerHTML.replace('Hide Role', 'View Role');
+  function switchTab(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-}
+
+  function toggleRole(btn) {
+    const details = btn.nextElementSibling;
+    const opening = !details.classList.contains('open');
+    details.classList.toggle('open', opening);
+    btn.classList.toggle('open', opening);
+    btn.querySelector('.chevron').textContent = opening ? '▼' : '▶';
+    btn.querySelector('.btn-label').textContent = opening ? 'Hide Role' : 'View Role';
+  }
 </script>
 
 </body>
